@@ -1,0 +1,58 @@
+%OM Soft computing package3%
+%Experiment1 and Experiment2 Batting%
+%13 columns
+%column1->  Players
+%column2->  Matches	
+%column3->  Inns	
+%column4->  Not Out	
+%column5->  Runs	
+%column6->  HS	
+%column7->  Ave
+%column8->  century
+%column9->  half_century	
+%column10-> Ct
+%column11-> Sr
+%column12-> currently playing
+%column13-> Heuristic rating Classes 0-Failure 1-Moderate 2-Performer
+
+clc;
+clear all;
+format long;
+
+%loading the dataset
+
+dataset=xlsread('Batting_India1.xls');
+[n,m]=size(dataset);
+
+%applying the heuristic rule for generating primary rating 
+%Considered factors runs, matches
+
+for i=1:1:n
+    %Primary rating - performer
+    if(dataset(i,5)>=0 && dataset(i,2)>=0)
+        dataset(i,13)=2;
+    %Primary rating - moderate
+    %else if(dataset(i,5)>=800 && dataset(i,5)<4000 && dataset(i,2)>=40)
+     %   dataset(i,13)=1;
+    else
+    %Primary rating - failure
+        dataset(i,13)=0;
+        end
+    end
+end
+
+%11 input neurons
+%5  hidden neurons
+
+
+dataset;
+dataset1=normc(dataset(:,2:m));
+[x,y]=size(dataset1);
+dataset(:,2:m)=dataset1;
+[v,w]=neurocall(dataset);
+
+
+
+
+
+

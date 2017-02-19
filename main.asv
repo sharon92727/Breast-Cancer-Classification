@@ -1,0 +1,35 @@
+
+clc;
+clear all;
+format long;
+
+%loading the dataset
+
+dataset=xlsread('train.xls');
+[n,m]=size(dataset);
+
+
+%9 input neurons
+%5  hidden neurons
+
+for i=1:n
+    if(dataset(i,5)>=1 && dataset(i,2)>=2)
+       dataset(i,11)=2;
+    else if(dataset(i,5)>=4 && dataset(i,5)<10 && dataset(i,2)>=4)
+            dataset(i,11)=1;
+        else
+            data
+            
+
+dataset;
+dataset1=normc(dataset(:,2:m));
+[x,y]=size(dataset1);
+%dataset(:,2:m)=dataset1;
+%disp(dataset);
+[v,w]=neurocall(dataset1);
+
+
+
+
+
+
